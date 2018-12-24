@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sp.dao.GiftMapper">
+  <resultMap id="BaseResultMap" type="sp.beans.Gift">
+    <id column="gift_id" jdbcType="INTEGER" property="giftId" />
+    <result column="gift_name" jdbcType="VARCHAR" property="giftName" />
+    <result column="gift_grade" jdbcType="INTEGER" property="giftGrade" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="sp.beans.Gift">
+    <result column="gift_image" jdbcType="LONGVARCHAR" property="giftImage" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    gift_id, gift_name, gift_grade
+  </sql>
+  <sql id="Blob_Column_List">
+    gift_image
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="sp.beans.GiftExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from gift
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="sp.beans.GiftExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from gift
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from gift
+    where gift_id = #{giftId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from gift
+    where gift_id = #{giftId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sp.beans.GiftExample">
+    delete from gift
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sp.beans.Gift">
+    insert into gift (gift_id, gift_name, gift_grade, 
+      gift_image)
+    values (#{giftId,jdbcType=INTEGER}, #{giftName,jdbcType=VARCHAR}, #{giftGrade,jdbcType=INTEGER}, 
+      #{giftImage,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sp.beans.Gift">
+    insert into gift
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="giftId != null">
+        gift_id,
+      </if>
+      <if test="giftName != null">
+        gift_name,
+      </if>
+      <if test="giftGrade != null">
+        gift_grade,
+      </if>
+      <if test="giftImage != null">
+        gift_image,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="giftId != null">
+        #{giftId,jdbcType=INTEGER},
+      </if>
+      <if test="giftName != null">
+        #{giftName,jdbcType=VARCHAR},
+      </if>
+      <if test="giftGrade != null">
+        #{giftGrade,jdbcType=INTEGER},
+      </if>
+      <if test="giftImage != null">
+        #{giftImage,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sp.beans.GiftExample" resultType="java.lang.Long">
+    select count(*) from gift
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update gift
+    <set>
+      <if test="record.giftId != null">
+        gift_id = #{record.giftId,jdbcType=INTEGER},
+      </if>
+      <if test="record.giftName != null">
+        gift_name = #{record.giftName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.giftGrade != null">
+        gift_grade = #{record.giftGrade,jdbcType=INTEGER},
+      </if>
+      <if test="record.giftImage != null">
+        gift_image = #{record.giftImage,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update gift
+    set gift_id = #{record.giftId,jdbcType=INTEGER},
+      gift_name = #{record.giftName,jdbcType=VARCHAR},
+      gift_grade = #{record.giftGrade,jdbcType=INTEGER},
+      gift_image = #{record.giftImage,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update gift
+    set gift_id = #{record.giftId,jdbcType=INTEGER},
+      gift_name = #{record.giftName,jdbcType=VARCHAR},
+      gift_grade = #{record.giftGrade,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sp.beans.Gift">
+    update gift
+    <set>
+      <if test="giftName != null">
+        gift_name = #{giftName,jdbcType=VARCHAR},
+      </if>
+      <if test="giftGrade != null">
+        gift_grade = #{giftGrade,jdbcType=INTEGER},
+      </if>
+      <if test="giftImage != null">
+        gift_image = #{giftImage,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where gift_id = #{giftId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="sp.beans.Gift">
+    update gift
+    set gift_name = #{giftName,jdbcType=VARCHAR},
+      gift_grade = #{giftGrade,jdbcType=INTEGER},
+      gift_image = #{giftImage,jdbcType=LONGVARCHAR}
+    where gift_id = #{giftId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sp.beans.Gift">
+    update gift
+    set gift_name = #{giftName,jdbcType=VARCHAR},
+      gift_grade = #{giftGrade,jdbcType=INTEGER}
+    where gift_id = #{giftId,jdbcType=INTEGER}
+  </update>
+</mapper>

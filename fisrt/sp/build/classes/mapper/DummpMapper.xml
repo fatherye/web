@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sp.dao.DummpMapper">
+  <resultMap id="BaseResultMap" type="sp.beans.Dummp">
+    <id column="dummp_id" jdbcType="INTEGER" property="dummpId" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="video_id" jdbcType="INTEGER" property="videoId" />
+    <result column="dummp_time" jdbcType="INTEGER" property="dummpTime" />
+    <result column="dummp_text" jdbcType="VARCHAR" property="dummpText" />
+    <result column="dummp_statement" jdbcType="INTEGER" property="dummpStatement" />
+    <result column="dummp_color" jdbcType="VARCHAR" property="dummpColor" />
+    <result column="dummp_position" jdbcType="INTEGER" property="dummpPosition" />
+    <result column="dummp_size" jdbcType="INTEGER" property="dummpSize" />
+    <association property="user" javaType="sp.beans.User">
+    <id column="user_id" jdbcType="INTEGER" property="userId"/>
+    <result column="user_account" jdbcType="VARCHAR" property="userAccount"/>
+    </association>
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    dummp_id, user_id, video_id, dummp_time, dummp_text, dummp_statement, dummp_color, 
+    dummp_position, dummp_size
+  </sql>
+  <sql id="Userbase_Column_List">
+    d.dummp_id, d.user_id, d.video_id, d.dummp_time, d.dummp_text, d.dummp_statement, d.dummp_color, 
+    d.dummp_position, d.dummp_size,u.user_id,u.user_account
+  </sql>
+  <select id="selectByExamplewithUser" parameterType="sp.beans.DummpExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Userbase_Column_List" />
+    FROM dummp d LEFT JOIN USER u ON d.`user_id`=u.`user_id`
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="sp.beans.DummpExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from dummp
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from dummp
+    where dummp_id = #{dummpId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from dummp
+    where dummp_id = #{dummpId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sp.beans.DummpExample">
+    delete from dummp
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sp.beans.Dummp">
+    insert into dummp (dummp_id, user_id, video_id, 
+      dummp_time, dummp_text, dummp_statement, 
+      dummp_color, dummp_position, dummp_size
+      )
+    values (#{dummpId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{videoId,jdbcType=INTEGER}, 
+      #{dummpTime,jdbcType=INTEGER}, #{dummpText,jdbcType=VARCHAR}, #{dummpStatement,jdbcType=INTEGER}, 
+      #{dummpColor,jdbcType=VARCHAR}, #{dummpPosition,jdbcType=INTEGER}, #{dummpSize,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="sp.beans.Dummp">
+    insert into dummp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dummpId != null">
+        dummp_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="dummpTime != null">
+        dummp_time,
+      </if>
+      <if test="dummpText != null">
+        dummp_text,
+      </if>
+      <if test="dummpStatement != null">
+        dummp_statement,
+      </if>
+      <if test="dummpColor != null">
+        dummp_color,
+      </if>
+      <if test="dummpPosition != null">
+        dummp_position,
+      </if>
+      <if test="dummpSize != null">
+        dummp_size,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dummpId != null">
+        #{dummpId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="videoId != null">
+        #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="dummpTime != null">
+        #{dummpTime,jdbcType=INTEGER},
+      </if>
+      <if test="dummpText != null">
+        #{dummpText,jdbcType=VARCHAR},
+      </if>
+      <if test="dummpStatement != null">
+        #{dummpStatement,jdbcType=INTEGER},
+      </if>
+      <if test="dummpColor != null">
+        #{dummpColor,jdbcType=VARCHAR},
+      </if>
+      <if test="dummpPosition != null">
+        #{dummpPosition,jdbcType=INTEGER},
+      </if>
+      <if test="dummpSize != null">
+        #{dummpSize,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sp.beans.DummpExample" resultType="java.lang.Long">
+    select count(*) from dummp
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update dummp
+    <set>
+      <if test="record.dummpId != null">
+        dummp_id = #{record.dummpId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.videoId != null">
+        video_id = #{record.videoId,jdbcType=INTEGER},
+      </if>
+      <if test="record.dummpTime != null">
+        dummp_time = #{record.dummpTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.dummpText != null">
+        dummp_text = #{record.dummpText,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dummpStatement != null">
+        dummp_statement = #{record.dummpStatement,jdbcType=INTEGER},
+      </if>
+      <if test="record.dummpColor != null">
+        dummp_color = #{record.dummpColor,jdbcType=VARCHAR},
+      </if>
+      <if test="record.dummpPosition != null">
+        dummp_position = #{record.dummpPosition,jdbcType=INTEGER},
+      </if>
+      <if test="record.dummpSize != null">
+        dummp_size = #{record.dummpSize,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update dummp
+    set dummp_id = #{record.dummpId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      video_id = #{record.videoId,jdbcType=INTEGER},
+      dummp_time = #{record.dummpTime,jdbcType=INTEGER},
+      dummp_text = #{record.dummpText,jdbcType=VARCHAR},
+      dummp_statement = #{record.dummpStatement,jdbcType=INTEGER},
+      dummp_color = #{record.dummpColor,jdbcType=VARCHAR},
+      dummp_position = #{record.dummpPosition,jdbcType=INTEGER},
+      dummp_size = #{record.dummpSize,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sp.beans.Dummp">
+    update dummp
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="videoId != null">
+        video_id = #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="dummpTime != null">
+        dummp_time = #{dummpTime,jdbcType=INTEGER},
+      </if>
+      <if test="dummpText != null">
+        dummp_text = #{dummpText,jdbcType=VARCHAR},
+      </if>
+      <if test="dummpStatement != null">
+        dummp_statement = #{dummpStatement,jdbcType=INTEGER},
+      </if>
+      <if test="dummpColor != null">
+        dummp_color = #{dummpColor,jdbcType=VARCHAR},
+      </if>
+      <if test="dummpPosition != null">
+        dummp_position = #{dummpPosition,jdbcType=INTEGER},
+      </if>
+      <if test="dummpSize != null">
+        dummp_size = #{dummpSize,jdbcType=INTEGER},
+      </if>
+    </set>
+    where dummp_id = #{dummpId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sp.beans.Dummp">
+    update dummp
+    set user_id = #{userId,jdbcType=INTEGER},
+      video_id = #{videoId,jdbcType=INTEGER},
+      dummp_time = #{dummpTime,jdbcType=INTEGER},
+      dummp_text = #{dummpText,jdbcType=VARCHAR},
+      dummp_statement = #{dummpStatement,jdbcType=INTEGER},
+      dummp_color = #{dummpColor,jdbcType=VARCHAR},
+      dummp_position = #{dummpPosition,jdbcType=INTEGER},
+      dummp_size = #{dummpSize,jdbcType=INTEGER}
+    where dummp_id = #{dummpId,jdbcType=INTEGER}
+  </update>
+</mapper>

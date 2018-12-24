@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>videocontent</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.3.3.7.css">
+  <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+  <script type="text/javascript" src="js/jquery-2.2.1.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.3.3.7.js"></script>
+</head>
+<body>
+	<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    
+    <div class="row">
+         <div class="col-md-8">
+              <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">标题1</h3>
+
+                    </div>
+                    <div class="panel-body clearallp">
+                       
+                       
+                               <div class="col-sm-12">
+                               <video class="width100 clearlrp" controls>
+                               <source src="video/cg2.mp4" type="video/mp4">
+                               </video>
+                               </div>
+                               <div class="col-sm-12">
+                              
+                                   <div class="col-sm-6 clearlrp">
+
+                                    <div class="col-sm-2">
+                                    <img src="image/user1.png">
+                                    </div>
+                                    <div class="col-sm-10">
+                                    <div class="col-sm-12">
+                                    <span>id：小虫</span>
+                                    </div>
+                                    <div class="col-sm-12">
+                                    <span>id：小虫</span>
+                                    </div>
+                        
+                                    </div>
+                                    
+
+
+                                   </div>
+                                   <div class="col-sm-2 clearlrp">
+                                   <span class="btn btn-lg btn-primary btn-block">下载</span>
+                                   </div>
+                                   <div class="col-sm-2 clearlrp">
+                                   <button class="btn btn-lg btn-warning btn-block" data-toggle="modal" 
+                                   data-target="#gift">送礼物</button> 
+                                   </div>
+                                   <div class="col-sm-2 clearlrp">
+                                   <span class="btn btn-lg btn-danger btn-block">举报</span>
+                                   </div>
+                               
+                               </div>
+                        
+                        
+                    </div>
+              </div>
+         </div>
+         <div class="col-md-4">
+              <div class="panel panel-primary">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">评论区</h3>
+
+                    </div>
+                    <div class="panel-body height600 ">
+                       
+                       
+                               <div class="col-sm-12 clearlrp">
+
+                               <iframe src="comment.html" width="100%" height="450"></iframe>
+                               </div>
+                               <div class="col-sm-12 clearlrp">
+                               <form action="" method=""> 
+                                   <div class="col-sm-10 clearlrp"><input class="dandan" type="text" name="dandan"></div>
+                                   <div class="col-sm-2 clearlrp"><button>发送</button></div>
+                               </form>
+                               </div>
+                        
+                        
+                    </div>
+              </div>
+         </div>
+    </div>  
+
+<div class="modal fade" id="gift" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          &times;
+        </button>
+        <h4 class="modal-title" id="myModalLabel">
+         你的礼物
+        </h4>
+      </div>
+      <div class="modal-body">
+                
+
+      </div>
+      <div class="modal-footer">
+      <div class="col-md-12">
+              
+                 
+                    
+                     
+                        <div class="col-md-3 margin10">
+                        <div class="col-md-12"><img src="image/1.png" class="aimg"></div>
+                        <div class="col-md-12">10积分</div>
+                        <div class="col-md-12">
+                        <div class="col-sm-3 clearlrp">
+                        <button class="dandan">-</button>
+                        </div>
+                        <div class="col-md-6 clearlrp">
+                        <button class="dandan">0</button>
+                        </div>
+                        <div class="col-sm-3 clearlrp">
+                        <button class="dandan">+</button>
+                        </div>
+                        </div>
+                        <div class="col-md-12">
+                        <button class="btn btn-xs btn-default btn-block">购买</button>
+                        </div>
+                       
+                        </div>
+
+            </div>
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+        </button>
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal -->
+</div>
+
+
+</body>
+</html>

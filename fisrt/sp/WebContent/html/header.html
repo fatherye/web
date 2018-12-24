@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>sss</title>
+	<!-- <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+ 
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.3.3.7.css">
+  <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+  <script type="text/javascript" src="js/jquery-2.2.1.js"></script>
+  <script type="text/javascript" src="js/bootstrap.min.3.3.7.js"></script>
+  
+</head>
+<body>
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <!-- <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script> -->
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+   <!--  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+   <!--  <script type="text/javascript" src="js/bootstrap.min.js"></script> -->
+    <!-- <script type="text/javascript" src="js/bootstrap.js"></script> -->
+    <script type="text/javascript" src="js/head.js"></script>
+    <div class="row"> 
+            <div class="col-md-12">
+                   <div class="col-md-4"></div> 
+                   <div class="col-sm-5"><h2><span class="label label-primary">Welcome to our home</span></h2></div>
+                  <div class="col-sm-3">
+                       <ul class="nav nav-pills" role="tablist">
+                            <li role="presentation" class="active"><a href="#">登陆</a></li>
+                            <li role="presentation" class="active"><a href="#">注册</a></li>
+                            
+                            <li role="presentation">
+                            <a href="#"  onclick="message()">消息 <span class="badge">0</span></a>
+                            </li>
+
+                        </ul>
+                   </div>
+            </div> 
+    </div>
+
+
+    <br>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+               <div id="navbar" class="navbar-collapse collapse">
+                   <form class="navbar-form navbar-right">
+                        <div class="form-group">
+                            <input type="text"  placeholder="输入关键字" class="form-control">
+                        </div>
+                    <button type="submit" class="btn btn-primary">搜索</button>
+                   </form>
+               </div>
+            </div>
+            <div class="col-md-3"> 
+            <ul class="nav nav-pills" role="tablist">
+              <li role="presentation" class="active"><a href="#" data-toggle="modal" data-target="#myModal">礼物商店</a></li>
+            </ul>
+            </div>
+        </div>
+    </div>
+	     
+    <br>
+
+<br>
+
+      <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">校园自媒体平台</a>
+          </div>
+          <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+              <li class="active"><a href="#">首页</a></li>
+              <li><a href="#about">个人信息中心</a></li>
+              <li><a href="#contact">校园大事件</a></li>
+              <li><a href="#contact">学习专区</a></li>
+              <li><a href="#contact">社团专区</a></li>
+              
+              <li><a href="#contact">自由分享区</a></li>
+              <li><a href="#contact">话题专区</a></li>
+             <!--  <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">文章专区 <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  <li><a href="#">讨论区</a></li>
+                  <li><a href="#">创建话题</a></li>
+                  
+                </ul>
+              </li> -->
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+
+
+
+
+ <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+          &times;
+        </button>
+        <h4 class="modal-title" id="myModalLabel">
+          shop
+        </h4>
+      </div>
+      <div class="modal-body">
+                用户：
+                  现有积分：
+                  结算所剩：
+
+      </div>
+      <div class="modal-footer">
+      <div class="col-md-12">
+              
+                 
+                    
+                     
+                        <div class="col-md-3 margin10">
+                        <div class="col-md-12"><img src="image/1.png" class="aimg"></div>
+                        <div class="col-md-12">10积分</div>
+                        <div class="col-md-12">
+                        <div class="col-sm-3 clearlrp">
+                        <button class="dandan">-</button>
+                        </div>
+                        <div class="col-md-6 clearlrp">
+                        <button class="dandan">0</button>
+                        </div>
+                        <div class="col-sm-3 clearlrp">
+                        <button class="dandan">+</button>
+                        </div>
+                        </div>
+                        <div class="col-md-12">
+                        <button class="btn btn-xs btn-default btn-block">购买</button>
+                        </div>
+                       
+                        </div>
+
+
+                        <div class="col-md-3 margin10">
+                        <div class="col-md-12"><img src="image/1.png" class="aimg"></div>
+                        <div class="col-md-12">10积分</div>
+                        <div class="col-md-12">
+                        <div class="col-sm-3 clearlrp">
+                        <button class="dandan">-</button>
+                        </div>
+                        <div class="col-md-6 clearlrp">
+                        <button class="dandan">0</button>
+                        </div>
+                        <div class="col-sm-3 clearlrp">
+                        <button class="dandan">+</button>
+                        </div>
+                        </div>
+                        <div class="col-md-12">
+                        <button class="btn btn-xs btn-default btn-block">购买</button>
+                        </div>
+                       
+                        </div>
+
+
+                        <div class="col-md-3 margin10">
+                        <div class="col-md-12"><img src="image/1.png" class="aimg"></div>
+                        <div class="col-md-12">10积分</div>
+                        <div class="col-md-12">
+                        <div class="col-sm-3 clearlrp">
+                        <button class="dandan">-</button>
+                        </div>
+                        <div class="col-md-6 clearlrp">
+                        <button class="dandan">0</button>
+                        </div>
+                        <div class="col-sm-3 clearlrp">
+                        <button class="dandan">+</button>
+                        </div>
+                        </div>
+                        <div class="col-md-12">
+                        <button class="btn btn-xs btn-default btn-block">购买</button>
+                        </div>
+                       
+                        </div>
+
+
+
+                        <div class="col-md-3 margin10">
+                        <div class="col-md-12"><img src="image/1.png" class="aimg"></div>
+                        <div class="col-md-12">10积分</div>
+                        <div class="col-md-12">
+                        <div class="col-sm-3 clearlrp">
+                        <button class="dandan">-</button>
+                        </div>
+                        <div class="col-md-6 clearlrp">
+                        <button class="dandan">0</button>
+                        </div>
+                        <div class="col-sm-3 clearlrp">
+                        <button class="dandan">+</button>
+                        </div>
+                        </div>
+                        <div class="col-md-12">
+                        <button class="btn btn-xs btn-default btn-block">购买</button>
+                        </div>
+                       
+                        </div>
+
+
+
+                        <div class="col-md-3 margin10">
+                        <div class="col-md-12"><img src="image/1.png" class="aimg"></div>
+                        <div class="col-md-12">10积分</div>
+                        <div class="col-md-12">
+                        <div class="col-sm-3 clearlrp">
+                        <button class="dandan">-</button>
+                        </div>
+                        <div class="col-md-6 clearlrp">
+                        <button class="dandan">0</button>
+                        </div>
+                        <div class="col-sm-3 clearlrp">
+                        <button class="dandan">+</button>
+                        </div>
+                        </div>
+                        <div class="col-md-12">
+                        <button class="btn btn-xs btn-default btn-block">购买</button>
+                        </div>
+                       
+                        </div>
+
+
+
+
+
+                     
+
+                        
+
+
+
+
+
+
+
+
+
+                        
+                        
+
+            </div>
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+        </button>
+        
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal -->
+</div>
+</body>
+</html>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="sp.dao.SmsgMapper">
+  <resultMap id="BaseResultMap" type="sp.beans.Smsg">
+    <id column="Smsg_id" jdbcType="INTEGER" property="smsgId" />
+    <result column="Smsg_statement" jdbcType="INTEGER" property="smsgStatement" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="Smsg_date" jdbcType="TIMESTAMP" property="smsgDate" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="sp.beans.Smsg">
+    <result column="Smsg_text" jdbcType="LONGVARCHAR" property="smsgText" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    Smsg_id, Smsg_statement, user_id, Smsg_date
+  </sql>
+  <sql id="Blob_Column_List">
+    Smsg_text
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="sp.beans.SmsgExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from smsg
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="sp.beans.SmsgExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from smsg
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from smsg
+    where Smsg_id = #{smsgId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from smsg
+    where Smsg_id = #{smsgId,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="sp.beans.SmsgExample">
+    delete from smsg
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="sp.beans.Smsg">
+    insert into smsg (Smsg_id, Smsg_statement, user_id, 
+      Smsg_date, Smsg_text)
+    values (#{smsgId,jdbcType=INTEGER}, #{smsgStatement,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, 
+      #{smsgDate,jdbcType=TIMESTAMP}, #{smsgText,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="sp.beans.Smsg">
+    insert into smsg
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="smsgId != null">
+        Smsg_id,
+      </if>
+      <if test="smsgStatement != null">
+        Smsg_statement,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="smsgDate != null">
+        Smsg_date,
+      </if>
+      <if test="smsgText != null">
+        Smsg_text,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="smsgId != null">
+        #{smsgId,jdbcType=INTEGER},
+      </if>
+      <if test="smsgStatement != null">
+        #{smsgStatement,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="smsgDate != null">
+        #{smsgDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="smsgText != null">
+        #{smsgText,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="sp.beans.SmsgExample" resultType="java.lang.Long">
+    select count(*) from smsg
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update smsg
+    <set>
+      <if test="record.smsgId != null">
+        Smsg_id = #{record.smsgId,jdbcType=INTEGER},
+      </if>
+      <if test="record.smsgStatement != null">
+        Smsg_statement = #{record.smsgStatement,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=INTEGER},
+      </if>
+      <if test="record.smsgDate != null">
+        Smsg_date = #{record.smsgDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.smsgText != null">
+        Smsg_text = #{record.smsgText,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update smsg
+    set Smsg_id = #{record.smsgId,jdbcType=INTEGER},
+      Smsg_statement = #{record.smsgStatement,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      Smsg_date = #{record.smsgDate,jdbcType=TIMESTAMP},
+      Smsg_text = #{record.smsgText,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update smsg
+    set Smsg_id = #{record.smsgId,jdbcType=INTEGER},
+      Smsg_statement = #{record.smsgStatement,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=INTEGER},
+      Smsg_date = #{record.smsgDate,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="sp.beans.Smsg">
+    update smsg
+    <set>
+      <if test="smsgStatement != null">
+        Smsg_statement = #{smsgStatement,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="smsgDate != null">
+        Smsg_date = #{smsgDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="smsgText != null">
+        Smsg_text = #{smsgText,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where Smsg_id = #{smsgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="sp.beans.Smsg">
+    update smsg
+    set Smsg_statement = #{smsgStatement,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      Smsg_date = #{smsgDate,jdbcType=TIMESTAMP},
+      Smsg_text = #{smsgText,jdbcType=LONGVARCHAR}
+    where Smsg_id = #{smsgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="sp.beans.Smsg">
+    update smsg
+    set Smsg_statement = #{smsgStatement,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      Smsg_date = #{smsgDate,jdbcType=TIMESTAMP}
+    where Smsg_id = #{smsgId,jdbcType=INTEGER}
+  </update>
+</mapper>

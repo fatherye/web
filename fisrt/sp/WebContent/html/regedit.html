@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>regedit</title>
+    
+	<!-- <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.3.3.7.css">
+    <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+    <script type="text/javascript" src="js/jquery-2.2.1.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.3.3.7.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/login.css">
+
+</head>
+<body>
+	<!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+    <!-- <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script> -->
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+   <!--  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+    
+	 <div class="container">
+      <form class="form-signin">
+        <h2 class="form-signin-heading">&nbsp;请输入你的注册信息</h2>
+
+        <label class="sr-only">账号名</label>
+        <input name="user_account" type="text"  class="form-control" placeholder="账号名" >
+
+        <label  class="sr-only">密码</label>
+        <input name="user_password" type="password"  class="form-control" placeholder="密码" >
+
+        <label  class="sr-only">再次输入密码</label>
+        <input name="user_password2"  class="form-control" placeholder="再次输入密码" >
+
+        
+
+        <label  class="sr-only">地址</label> 
+        <input name="user_address" type="text"  class="form-control" placeholder="地址" >
+
+        <label  class="sr-only">邮箱</label>
+        <input name="user_email"  class="form-control" placeholder="邮箱" >
+
+        <label  class="sr-only">电话号码</label>
+        <input name="user_phone" type="text"  class="form-control" placeholder="电话号码" >
+        <br>
+
+        <label class="sr-only">性别</label>
+        <span>性别：</span>
+        男<input name="user_sex" type="radio" value="男">
+        女<input name="user_sex" type="radio" value="女">
+        <br>
+        <br>
+
+        <button class="btn btn-lg btn-primary btn-block" type="submit">注册</button>
+        <button class="btn btn-lg btn-primary btn-block" type="reset">重置</button>
+        <button class="btn btn-lg btn-success btn-block"><a href="index.jsp">返回主页</a></button>
+      </form>
+
+    </div> 
+</body>
+</html>

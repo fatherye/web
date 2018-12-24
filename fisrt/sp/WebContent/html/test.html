@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"> 
+	<title>Bootstrap 实例 - 模态框（Modal）插件</title>
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+	
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.3.3.7.css">
+	<link rel="stylesheet" type="text/css" href="css/mystyle.css">
+	<script type="text/javascript" src="js/jquery-2.2.1.js"></script>
+	<script type="text/javascript" src="js/bootstrap.min.3.3.7.js"></script>
+	<!-- <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+</head>
+<body>
+
+<h2>创建模态框（Modal）</h2>
+<!-- 按钮触发模态框 -->
+<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+	开始演示模态框
+</button>
+<!-- 模态框（Modal） -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+				<h4 class="modal-title" id="myModalLabel">
+					shop
+				</h4>
+			</div>
+			<div class="modal-body">
+                用户：
+                  现有积分：
+                  结算所剩：
+
+			</div>
+			<div class="modal-footer">
+			<div class="col-md-12">
+              
+                 
+                    
+                     
+                        <div class="col-md-3 margin10">
+                        <div class="col-md-12"><img src="image/1.png" class="aimg"></div>
+                        <div class="col-md-12">10积分</div>
+                        <div class="col-md-12">
+                        <div class="col-sm-3 clearlrp">
+                        <button class="dandan">-</button>
+                        </div>
+                        <div class="col-md-6 clearlrp">
+                        <button class="dandan">0</button>
+                        </div>
+                        <div class="col-sm-3 clearlrp">
+                        <button class="dandan">+</button>
+                        </div>
+                        </div>
+                        <div class="col-md-12">
+                        <button class="btn btn-xs btn-default btn-block">购买</button>
+                        </div>
+                       
+                        </div>
+
+            </div>
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭
+				</button>
+				
+			</div>
+		</div><!-- /.modal-content -->
+	</div><!-- /.modal -->
+</div>
+</body>
+</html>

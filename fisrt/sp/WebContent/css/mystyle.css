@@ -1,0 +1,149 @@
+.dandan{
+	width: 100%;
+}
+.tupian{
+    width: 100%;
+    height: 200px;
+}
+.hcenter{
+	text-align: center;
+}
+.aimg{
+	width: 75px;
+	height: 65px;
+}
+.width10{
+	width: 10%;
+	padding: 0px;
+}
+.width20{
+	width: 20%;
+	padding: 0px;
+}
+.width30{
+	width: 30%;
+	padding: 0px;
+}
+.width40{
+	width: 40%;
+	padding: 0px;
+}
+.width50{
+	width: 50%;
+	padding: 0px;
+}
+.width60{
+	width: 60%;
+	padding: 0px;
+}
+.width70{
+	width: 70%;
+	padding: 0px;
+}
+.width80{
+	width: 80%;
+	padding: 0px;
+}
+.width90{
+	width: 90%;
+	padding: 0px;
+}
+.width100{
+	width: 100%;
+	padding: 0px;
+}
+.clearlrp{
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.margin10{
+	margin-bottom: 10px;
+}
+.clearallp{
+	padding: 0px;
+}
+.textcenter{
+	text-align: center;
+}
+.textlfet{
+	text-align: left;
+}
+.addpadb10{
+	padding-bottom: 10px;
+}
+.addallp{
+	padding: 10px;
+}
+.height755{
+	height: 755px;
+}
+.height590{
+	height: 590px;
+}
+.heightauto{
+	height: auto;
+}
+.height585{
+	height: 585px;
+}
+.margin0{
+	margin: 0px;
+}
+.onhidden{
+	display: none;
+}
+
+.imgcss{
+	width:222px;
+	height:130px;
+}
+.marginlr420{
+	margin-right: 420px;
+	margin-left: 420px;
+}
+.fontsizepxb{
+	font-size:20px;
+}
+.image5050{
+	width:50px;
+	height:50px;
+}
+.vipbig{
+	height:475px;
+}
+.vipin{
+	height:450px;
+}
+.userhead{
+	width:350px;
+	height:350px;
+}
+.userimagebig{
+	height:480px;
+}
+.paihangban{
+	height:420px;
+}
+.onleft{
+	float:left;
+}
+.hfooter{
+	text-align: center;
+	background-color: #D4D4D4;
+	line-height:24px ;
+	padding: 50px 0px;
+	margin-top: 25px;
+}
+.hfooter i{
+	font-style: normal;
+	margin: 0px 5px;
+}
+.hfooter a{
+	color: #000;
+}
+.hfooter a:hover{
+	color:#F60 ;
+}
+.height200{
+	height:200px;
+}

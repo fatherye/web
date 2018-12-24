@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+<context:property-placeholder location="classpath:dbconfig.properties"/>
+
+<bean id="pooledDataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+<property name="driverClass" value="${jdbc.driverClass}"></property>
+<property name="jdbcUrl" value="${jdbc.jdbcUrl}"></property>
+<property name="user" value="${jdbc.user}"></property>
+<property name="password" value="${jdbc.password}"></property>
+
+</bean>
+<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+   <property name="configLocation" value="classpath:mybatis-config.xml"></property>
+   <property name="dataSource" ref="pooledDataSource"></property>
+   <property name="mapperLocations" value="classpath:mapper/*.xml"></property>
+</bean>
+<!-- 配置扫描器，将mybatis接口实现并加入springioc -->
+<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+<property name="basePackage" value="sp.dao"></property>
+</bean>
+
+<!-- 批量sqlsession -->
+<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory"></constructor-arg>
+<!--  <constructor-arg name="executorType" value="BATCH"> </constructor-arg> -->
+</bean>
+
+<!-- 事务控制 -->
+<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+<property name="dataSource" ref="pooledDataSource"></property>
+</bean>
+
+<aop:config>
+<aop:pointcut expression="execution(* sp.service..*(..))" id="txPoint"/>
+<aop:advisor advice-ref="txAdvice" pointcut-ref="txPoint"/>
+</aop:config>
+
+
+<tx:advice id="txAdvice">
+<tx:attributes>
+   <tx:method name="*"/>
+    <tx:method name="get*" read-only="true"/>
+</tx:attributes>
+</tx:advice>
+
+
+ 
+
+</beans>
